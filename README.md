@@ -145,12 +145,7 @@ repo-explainer/
 - No GitHub authentication required for public repos (subject to the
   unauthenticated rate limit of 60 requests/hour per IP).
 
-## Notes on the AI model
 
-The default model is `openai/gpt-oss-20b` on Groq. Override it by setting
-`GROQ_MODEL` in `.env` if you want to try a different model — check
-[console.groq.com/docs/models](https://console.groq.com/docs/models) for
-the current list, since available models change over time.
 
 ## Resume line
 
