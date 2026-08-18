@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RepoLens -- GitHub Repo Explainer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="wrap">
+    <h1>RepoLens</h1>
+    <p class="tagline">Paste a public GitHub repo URL and get a plain-English onboarding report: summary, tech stack, folder breakdown, and where to start reading.</p>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form action="{{ url_for('generate') }}" method="post">
+      <label for="repo_url">GitHub repo URL</label>
+      <input type="text" id="repo_url" name="repo_url" placeholder="https://github.com/pallets/flask"
+             value="{{ repo_url or '' }}" required>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="interview" name="interview">
+        <label for="interview" style="margin:0;">Also generate 5 interview questions about this codebase</label>
+      </div>
+
+      <button type="submit">Generate report</button>
+    </form>
+
+    <footer>
+      Built with the GitHub API + Groq. Public repos only. Generation can take 10-20 seconds.
+    </footer>
+  </div>
+</body>
+</html>

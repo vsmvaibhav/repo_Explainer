@@ -1,0 +1,14 @@
+# Optional: lets Render auto-configure the service from this file
+# ("Blueprint" deploy) instead of clicking through the dashboard by hand.
+services:
+  - type: web
+    name: repolens
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --timeout 60
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false
